@@ -1,0 +1,80 @@
+
+name: base
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  # --- Core Python and Package Management ---
+  - python=3.12
+  - pip
+
+  # --- Core Data Science & Scientific Computing ---
+  - pandas
+  - numpy
+  - scikit-learn
+  - scipy
+  - statsmodels
+  - pyarrow
+
+  # --- Visualization ---
+  - matplotlib
+  - seaborn
+  - altair
+  - bokeh
+  - holoviews
+  - hvplot
+  - panel
+  - datashader
+
+  # --- Jupyter Ecosystem ---
+  - jupyterlab
+  - notebook
+  - ipykernel
+  - ipywidgets
+
+  # --- Web & Data Scraping ---
+  - requests
+  - beautifulsoup4
+  - lxml
+  - scrapy
+
+  # --- Machine Learning & Parallel Computing ---
+  - dask
+  - imbalanced-learn
+  - gensim
+  - numba
+  - joblib
+
+  # --- File I/O & Utilities ---
+  - openpyxl
+  - h5py
+  - pytables
+  - tqdm
+
+  # --- Code Quality (Optional but good practice) ---
+  - black
+  - flake8
+  - isort
+  - pylint
+
+  # --- Packages to be installed with Pip ---
+  - pip:
+    - bertopic==0.17.3
+    - transformers==4.52.4
+    - torch==2.7.1
+    - sentence-transformers==4.1.0
+    - accelerate
+    - datasets
+    - hdbscan
+    - huggingface-hub
+    - polars
+    - pynndescent
+    - pyldavis
+    - safetensors
+    - umap-learn
+    - selenium
+    - webdriver-manager
+    - wordcloud
+    - xlsxwriter
+    - jieba
