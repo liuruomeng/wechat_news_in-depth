@@ -7,9 +7,11 @@ library(RColorBrewer)
 library(pheatmap)
 library(gridExtra)
 library(grid)
+library(jiebaRD)
+library(jiebaR)
 
 
-
+## data preparation
 #in_depth_corpus <- read_csv("../../01_data/02_processed/2025-09-09_final_cleaned_data.csv") %>%
 #  select(title, account, publish_time, content)
 
@@ -53,8 +55,42 @@ stm_model <- stm(
 # saveRDS(stm_model, file = "09-11_stm_k21_results")
 
 summary(stm_model)
-
 labelTopics(stm_model,topics = 15, n = 30)
+
+original_meta <- in_depth_corpus %>%
+  mutate(
+    publish_time = as.POSIXct(publish_time),
+    days = as.numeric(difftime(publish_time, min(publish_time), units = "days"))
+  ) %>%
+  select(account, days, publish_time)
+
+if(nrow(meta) == nrow(original_meta)) {
+  meta$publish_time <- original_meta$publish_time
+} else {
+  meta <- meta %>%
+    left_join(
+      original_meta %>% select(account, days, publish_time),
+      by = c("account", "days")
+    )
+}
+
+topic_time_data <- as.data.frame(stm_model$theta) %>%
+  mutate(
+    days = meta$days,
+    publish_time = meta$publish_time  # ← add publish_time
+  ) %>%
+  pivot_longer(
+    cols = starts_with("V"),
+    names_to = "topic_num",
+    values_to = "proportion"
+  ) %>%
+  mutate(
+    topic_num = as.numeric(gsub("V", "", topic_num)),
+    topic = paste0("Topic ", topic_num)
+  )
+
+
+
 
 prep <- estimateEffect(1:21 ~ s(days), stm_model, meta = meta, uncertainty = "Global")
 par(mfrow = c(5, 5), mar = c(3, 3, 2, 1))
