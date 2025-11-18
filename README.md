@@ -2,7 +2,7 @@
 
 This project aims at quantitatively description of the content of in-depth reporting in China in the past decade. The studies were conducted in 2025 (April - September)
 
-*   **Author**: Ruomeng Liu, M.Phil. candidate, Journalism and Media Studies Centre, HKU
+*   **Author**: Ruomeng Liu
 *   **Date**: September 2025
 *   **Contact**: [ruomeng.6@connect.hku.hk](mailto:ruomeng.6@connect.hku.hk)
 
