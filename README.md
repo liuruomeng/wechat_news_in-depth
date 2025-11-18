@@ -64,4 +64,4 @@ The project is organized into the following directories and key files:
 
 
 
-Data avalablity: OSF.
+Data avalablity: [OSF.](https://osf.io/k4r65/overview)
